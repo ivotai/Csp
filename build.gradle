@@ -19,7 +19,14 @@ allprojects {
     repositories {
         google()
         jcenter()
-        
+        flatDir {
+            dirs 'libs'
+        }
+        maven { url "https://jitpack.io" }
+        maven { url 'http://dl.bintray.com/amulyakhare/maven' }
+        maven {
+            url 'http://github.com/wada811/Android-Material-Design-Colors/raw/master/repository/'
+        }
     }
 }
 
