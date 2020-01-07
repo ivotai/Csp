@@ -9,7 +9,7 @@ data class LoginResponse(
     val success: Boolean,
     val user: User,
     val message: String
-) {
+){
     val failed: Boolean
         get() {
             val failed = !success
@@ -18,8 +18,10 @@ data class LoginResponse(
         }
 }
 
+
 data class User(
     val id: Long,
     val roleTag: String,
+    val roles: List<String>,
     val username: String
 )
