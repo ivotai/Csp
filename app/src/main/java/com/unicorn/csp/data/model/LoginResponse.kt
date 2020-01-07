@@ -1,4 +1,4 @@
-package com.unircorn.csp.data.model
+package com.unicorn.csp.data.model
 
 import com.blankj.utilcode.util.ToastUtils
 

@@ -1,9 +1,9 @@
-package com.unircorn.csp.app.helper
+package com.unicorn.csp.app.helper
 
-import com.unircorn.csp.app.Cookie
-import com.unircorn.csp.app.Globals
-import com.unircorn.csp.app.SESSION
-import com.unircorn.csp.app.di.ComponentHolder
+import com.unicorn.csp.app.Cookie
+import com.unicorn.csp.app.Globals
+import com.unicorn.csp.app.SESSION
+import com.unicorn.csp.app.di.ComponentHolder
 import okhttp3.Interceptor
 import okhttp3.Response
 

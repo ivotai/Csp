@@ -1,6 +1,6 @@
-package com.unircorn.csp.app.di.module
+package com.unicorn.csp.app.di.module
 
-import com.unircorn.csp.data.api.SimpleApi
+import com.unicorn.csp.data.api.SimpleApi
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit

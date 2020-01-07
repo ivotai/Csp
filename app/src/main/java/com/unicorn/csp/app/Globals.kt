@@ -1,6 +1,6 @@
-package com.unircorn.csp.app
+package com.unicorn.csp.app
 
-import com.unircorn.csp.data.model.LoginResponse
+import com.unicorn.csp.data.model.LoginResponse
 
 object Globals {
 

@@ -1,8 +1,8 @@
-package com.unircorn.csp.app.di.module
+package com.unicorn.csp.app.di.module
 
 import com.facebook.stetho.okhttp3.StethoInterceptor
-import com.unircorn.csp.app.baseUrl
-import com.unircorn.csp.app.helper.NetworkHelper
+import com.unicorn.csp.app.baseUrl
+import com.unicorn.csp.app.helper.NetworkHelper
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
