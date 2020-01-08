@@ -27,37 +27,37 @@ class MainAct : BaseAct() {
             .addItem(
                 newItem(
                     FontAwesome.Icon.faw_balance_scale,
-                    MainPagerAdapter.titles[0]
+                    MainPagerAdapter.titles[0].substring(0,2)
                 )
             )
             .addItem(
                 newItem(
-                    FontAwesome.Icon.faw_calendar_check,
-                    MainPagerAdapter.titles[1]
+                    FontAwesome.Icon.faw_calendar_check1,
+                    MainPagerAdapter.titles[1].substring(0,2)
                 )
             )
             .addItem(
                 newItem(
                     FontAwesome.Icon.faw_book_open,
-                    MainPagerAdapter.titles[2]
+                    MainPagerAdapter.titles[2].substring(0,2)
                 )
             )
             .addItem(
                 newItem(
                     FontAwesome.Icon.faw_book,
-                    MainPagerAdapter.titles[3]
+                    MainPagerAdapter.titles[3].substring(0,2)
                 )
             )
             .addItem(
                 newItem(
                     FontAwesome.Icon.faw_cog,
-                    MainPagerAdapter.titles[4]
+                    MainPagerAdapter.titles[4].substring(0,2)
                 )
             )
             .addItem(
                 newItem(
-                    FontAwesome.Icon.faw_comments,
-                    MainPagerAdapter.titles[5]
+                    FontAwesome.Icon.faw_comments1,
+                    MainPagerAdapter.titles[5].substring(0,2)
                 )
             )
             .build()
