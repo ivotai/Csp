@@ -16,4 +16,6 @@ const val displayDateFormat3 = "yyyy/MM/dd"
 
 const val Cookie = "Cookie"
 const val SESSION = "SESSION"
+
 const val Title = "Title"
+const val Category = "Category"

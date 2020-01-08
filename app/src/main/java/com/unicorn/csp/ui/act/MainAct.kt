@@ -9,14 +9,17 @@ import com.mikepenz.iconics.typeface.library.fontawesome.FontAwesome
 import com.mikepenz.iconics.utils.toIconicsColor
 import com.mikepenz.iconics.utils.toIconicsSizeDp
 import com.unicorn.csp.R
+import com.unicorn.csp.app.Globals
+import com.unicorn.csp.app.helper.ExceptionHelper
+import com.unicorn.csp.app.observeOnMain
+import com.unicorn.csp.app.toActAndFinish
 import com.unicorn.csp.ui.adapter.MainPagerAdapter
 import com.unicorn.csp.ui.base.BaseAct
+import io.reactivex.rxkotlin.subscribeBy
 import kotlinx.android.synthetic.main.act_main.*
 import me.majiajie.pagerbottomtabstrip.item.NormalItemView
 
-
 class MainAct : BaseAct() {
-
 
     override fun initViews() {
         val mainPagerAdapter = MainPagerAdapter(supportFragmentManager)
@@ -62,6 +65,15 @@ class MainAct : BaseAct() {
             )
             .build()
         navigationController.setupWithViewPager(viewPager)
+
+        api.getArticle(pageNo = 0,category = MainPagerAdapter.categories[0]).observeOnMain(this)
+            .subscribeBy (
+                onSuccess = {
+                },
+                onError = {
+                    ExceptionHelper.showPrompt(it)
+                }
+            )
     }
 
     private fun newItem(icon: IIcon, text: String) =
