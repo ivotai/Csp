@@ -19,3 +19,4 @@ const val SESSION = "SESSION"
 
 const val Title = "Title"
 const val Category = "Category"
+const val ObjectId = "ObjectId"

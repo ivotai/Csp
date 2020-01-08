@@ -25,4 +25,7 @@ interface SimpleApi {
         @Query("category") category: String
     ): Single<Response<Page<Article>>>
 
+    @GET("api/v1/app/article/{objectId}")
+    fun getArticle(@Path("objectId") objectId: String): Single<Response<Article>>
+
 }
