@@ -10,7 +10,7 @@ import com.unicorn.csp.ui.fra.TopicFra
 class MainPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
 
     companion object {
-        val titles = listOf("政策规定", "工作动态", "学习资料", "专题研究", "技术标准", "互动专区")
+         val titles = listOf("政策规定", "工作动态", "学习资料", "专题研究", "技术标准", "互动专区")
     }
 
     override fun getItem(pos: Int) = if (pos != titles.size - 1) ArticleFra().apply {

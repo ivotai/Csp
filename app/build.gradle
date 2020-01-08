@@ -75,6 +75,10 @@ dependencies {
     implementation 'com.afollestad.material-dialogs:datetime:3.1.1'
     implementation 'com.facebook.stetho:stetho:1.5.1'
     implementation 'com.facebook.stetho:stetho-okhttp3:1.5.1'
+    implementation 'me.majiajie:pager-bottom-tab-strip:2.3.0X'
+    implementation 'com.hjq:titlebar:6.0'
+    implementation "com.mikepenz:iconics-core:4.0.2"
+    implementation 'com.mikepenz:fontawesome-typeface:5.9.0.0-kotlin@aar'
 }
 
 androidExtensions {

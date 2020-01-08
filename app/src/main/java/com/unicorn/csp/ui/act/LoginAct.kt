@@ -1,12 +1,9 @@
 package com.unicorn.csp.ui.act
 
 import com.unicorn.csp.R
-import com.unicorn.csp.app.Globals
+import com.unicorn.csp.app.*
 import com.unicorn.csp.app.helper.DialogHelper
 import com.unicorn.csp.app.helper.ExceptionHelper
-import com.unicorn.csp.app.observeOnMain
-import com.unicorn.csp.app.safeClicks
-import com.unicorn.csp.app.trimText
 import com.unicorn.csp.ui.base.BaseAct
 import io.reactivex.rxkotlin.subscribeBy
 import kotlinx.android.synthetic.main.act_login.*
@@ -35,6 +32,7 @@ class LoginAct : BaseAct() {
                     mask.dismiss()
                     if (it.failed) return@subscribeBy
                     Globals.loginResponse = it
+                    toActAndFinish(MainAct::class.java)
                 },
                 onError = {
                     mask.dismiss()
