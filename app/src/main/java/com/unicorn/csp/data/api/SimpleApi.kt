@@ -5,9 +5,9 @@ import com.unicorn.csp.app.defaultPageSize
 import com.unicorn.csp.data.model.Article
 import com.unicorn.csp.data.model.LoginResponse
 import com.unicorn.csp.data.model.Page
+import com.unicorn.csp.data.model.Response
 import io.reactivex.Single
 import retrofit2.Call
-import retrofit2.Response
 import retrofit2.http.*
 
 interface SimpleApi {
