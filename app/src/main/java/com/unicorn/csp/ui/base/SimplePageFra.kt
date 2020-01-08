@@ -6,10 +6,12 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.unicorn.csp.R
+import com.unicorn.csp.app.defaultPaddingPx
 import com.unicorn.csp.app.defaultPageSize
 import com.unicorn.csp.app.observeOnMain
 import com.unicorn.csp.data.model.Page
 import com.unicorn.csp.data.model.Response
+import com.unicorn.csp.ui.LinearSpanDecoration
 import io.reactivex.Single
 import io.reactivex.rxkotlin.subscribeBy
 import kotlinx.android.synthetic.main.ui_swipe_recycler.*
@@ -36,6 +38,7 @@ abstract class SimplePageFra<Model, K : BaseViewHolder> : BaseFra() {
             layoutManager = LinearLayoutManager(context)
             simpleAdapter.bindToRecyclerView(this)
             simpleAdapter.setEnableLoadMore(true)
+            addItemDecoration(LinearSpanDecoration(defaultPaddingPx))
         }
     }
 

@@ -4,7 +4,7 @@ import com.blankj.utilcode.util.ConvertUtils
 
 const val defaultPageSize = 10
 
-val defaultPaddingDp = ConvertUtils.dp2px(16f)
+val defaultPaddingPx = ConvertUtils.dp2px(16f)
 
 const val baseUrl = "http://csp.seafa.kjgk.xyz:8000/"
 

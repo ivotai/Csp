@@ -79,6 +79,7 @@ dependencies {
     implementation 'com.hjq:titlebar:6.0'
     implementation "com.mikepenz:iconics-core:4.0.2"
     implementation 'com.mikepenz:fontawesome-typeface:5.9.0.0-kotlin@aar'
+    implementation 'com.github.shts:TriangleLabelView:1.1.2'
 }
 
 androidExtensions {
