@@ -14,13 +14,17 @@ class LoginAct : BaseAct() {
     override val layoutId = R.layout.act_login
 
     override fun initViews() {
+        with(UserInfo) {
+            etUsername.setText(username)
+            etPassword.setText(password)
+        }
     }
 
     override fun bindIntent() {
         mbLogin.safeClicks().subscribe { loginX() }
     }
 
-    private fun loginX(){
+    private fun loginX() {
         if (etUsername.isEmpty()) {
             ToastUtils.showShort("用户名不能为空")
             return
@@ -41,6 +45,10 @@ class LoginAct : BaseAct() {
                     mask.dismiss()
                     if (it.failed) return@subscribeBy
                     Globals.loginResponse = it
+                    with(UserInfo) {
+                        username = etUsername.trimText()
+                        password = etPassword.trimText()
+                    }
                     toActAndFinish(MainAct::class.java)
                 },
                 onError = {

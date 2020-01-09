@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning">
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:replace="android:label">
         <activity android:name="com.unicorn.csp.ui.act.LoginAct">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,7 +24,7 @@
         <activity android:name=".ui.act.MainAct" />
         <activity android:name=".ui.act.ArticleAct" />
         <activity android:name=".ui.act.CreateTopicAct" />
-        <activity android:name=".ui.act.TopicAct"/>
+        <activity android:name=".ui.act.TopicAct" />
     </application>
 
 </manifest>
