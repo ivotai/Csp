@@ -9,7 +9,7 @@
         android:id="@+id/titleBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:title="发布新帖"
+        app:title="发布帖子"
         app:rightTitle="发帖"
         app:titleColor="@color/md_black"
         app:titleSize="18dp" />

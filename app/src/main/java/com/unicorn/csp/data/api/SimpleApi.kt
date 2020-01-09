@@ -26,7 +26,7 @@ interface SimpleApi {
     fun getArticle(@Path("objectId") objectId: String): Single<Response<Article>>
 
     @POST("api/v1/app/topic")
-    fun createTopic(@Body topic: Topic): Single<Response<Any>>
+    fun createTopic(@Body createTopicParam:CreateTopicParam): Single<Response<Any>>
 
     @GET("api/v1/app/topic")
     fun getTopic(

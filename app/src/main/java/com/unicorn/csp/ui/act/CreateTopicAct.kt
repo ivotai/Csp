@@ -8,6 +8,7 @@ import com.unicorn.csp.app.*
 import com.unicorn.csp.app.helper.DialogHelper
 import com.unicorn.csp.app.helper.ExceptionHelper
 import com.unicorn.csp.data.event.RefreshTopicEvent
+import com.unicorn.csp.data.model.CreateTopicParam
 import com.unicorn.csp.data.model.Topic
 import com.unicorn.csp.ui.base.BaseAct
 import com.unicorn.ticket.bs.app.RxBus
@@ -24,6 +25,7 @@ class CreateTopicAct : BaseAct() {
     override fun bindIntent() {
         titleBar.setOnTitleBarListener(object : OnTitleBarListener {
             override fun onLeftClick(v: View?) {
+                finish()
             }
 
             override fun onRightClick(v: View?) {
@@ -49,7 +51,12 @@ class CreateTopicAct : BaseAct() {
 
     private fun createTopic() {
         val mask = DialogHelper.showMask(this)
-        api.createTopic(Topic(title = etTitle.trimText(), content = etContent.trimText()))
+        api.createTopic(
+            CreateTopicParam(
+                title = etTitle.trimText(),
+                content = etContent.trimText()
+            )
+        )
             .observeOnMain(this)
             .subscribeBy(
                 onSuccess = {
