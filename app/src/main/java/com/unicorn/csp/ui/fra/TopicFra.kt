@@ -1,42 +1,53 @@
 package com.unicorn.csp.ui.fra
 
-import android.graphics.Color
-import com.mikepenz.iconics.IconicsDrawable
-import com.mikepenz.iconics.typeface.library.fontawesome.FontAwesome
-import com.mikepenz.iconics.utils.toIconicsColor
-import com.mikepenz.iconics.utils.toIconicsSizeDp
+import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.chad.library.adapter.base.BaseQuickAdapter
 import com.unicorn.csp.R
 import com.unicorn.csp.app.safeClicks
 import com.unicorn.csp.app.startAct
-import com.unicorn.csp.data.event.RefreshATopicEvent
+import com.unicorn.csp.data.event.RefreshTopicEvent
+import com.unicorn.csp.data.model.Page
+import com.unicorn.csp.data.model.Response
+import com.unicorn.csp.data.model.Topic
 import com.unicorn.csp.ui.act.CreateTopicAct
+import com.unicorn.csp.ui.adapter.TopicAdapter
 import com.unicorn.csp.ui.base.BaseFra
+import com.unicorn.csp.ui.base.KVHolder
+import com.unicorn.csp.ui.base.SimplePageFra
 import com.unicorn.ticket.bs.app.RxBus
+import io.reactivex.Single
 import io.reactivex.functions.Consumer
 import kotlinx.android.synthetic.main.fra_topic.*
 
-class TopicFra : BaseFra() {
+class TopicFra : SimplePageFra<Topic, KVHolder>() {
 
-    override val layoutId = R.layout.fra_topic
+    override val simpleAdapter: BaseQuickAdapter<Topic, KVHolder> = TopicAdapter()
+
+    override fun loadPage(pageNo: Int): Single<Response<Page<Topic>>> =
+        api.getTopic(pageNo = pageNo)
 
     override fun initViews() {
-        IconicsDrawable(this.context!!)
-            .icon(FontAwesome.Icon.faw_plus)
-            .color(Color.WHITE.toIconicsColor())
-            .size(24.toIconicsSizeDp())
-            .let { fabCreateTopic.setImageDrawable(it) }
+        super.initViews()
     }
 
     override fun bindIntent() {
         super.bindIntent()
-
         fabCreateTopic.safeClicks().subscribe { context!!.startAct(CreateTopicAct::class.java) }
     }
 
     override fun registerEvent() {
-        RxBus.registerEvent(this, RefreshATopicEvent::class.java, Consumer {
-
+        RxBus.registerEvent(this, RefreshTopicEvent::class.java, Consumer {
+            loadFirstPage()
         })
     }
+
+    override val mRecyclerView: RecyclerView
+        get() = recyclerView
+
+    override val mSwipeRefreshLayout: SwipeRefreshLayout
+        get() = swipeRefreshLayout
+
+    override val layoutId = R.layout.fra_topic
 
 }

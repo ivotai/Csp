@@ -28,4 +28,10 @@ interface SimpleApi {
     @POST("api/v1/app/topic")
     fun createTopic(@Body topic: Topic): Single<Response<Any>>
 
+    @GET("api/v1/app/topic")
+    fun getTopic(
+        @Query("pageNo") pageNo: Int,
+        @Query("pageSize") pageSize: Int = defaultPageSize
+    ): Single<Response<Page<Topic>>>
+
 }

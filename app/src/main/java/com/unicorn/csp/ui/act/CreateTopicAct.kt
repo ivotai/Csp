@@ -1,14 +1,13 @@
 package com.unicorn.csp.ui.act
 
 import android.view.View
-import android.widget.Toast
 import com.blankj.utilcode.util.ToastUtils
 import com.hjq.bar.OnTitleBarListener
 import com.unicorn.csp.R
 import com.unicorn.csp.app.*
 import com.unicorn.csp.app.helper.DialogHelper
 import com.unicorn.csp.app.helper.ExceptionHelper
-import com.unicorn.csp.data.event.RefreshATopicEvent
+import com.unicorn.csp.data.event.RefreshTopicEvent
 import com.unicorn.csp.data.model.Topic
 import com.unicorn.csp.ui.base.BaseAct
 import com.unicorn.ticket.bs.app.RxBus
@@ -57,7 +56,7 @@ class CreateTopicAct : BaseAct() {
                     mask.dismiss()
                     if (it.failed) return@subscribeBy
                     ToastUtils.showShort("发帖成功")
-                    RxBus.post(RefreshATopicEvent())
+                    RxBus.post(RefreshTopicEvent())
                     finish()
                 },
                 onError = {
