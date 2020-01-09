@@ -41,4 +41,11 @@ interface SimpleApi {
         @Query("pageSize") pageSize: Int = defaultPageSize
     ): Single<Response<Page<Reply>>>
 
+    @POST("api/v1/app/topic/{topicId}/reply")
+    fun createReply(
+        @Path("topicId") topicId: String,
+        @Body createReplyParam: CreateReplyParam
+    ): Single<Response<Any>>
+
+
 }
