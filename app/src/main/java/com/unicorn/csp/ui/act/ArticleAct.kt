@@ -1,5 +1,7 @@
 package com.unicorn.csp.ui.act
 
+import android.view.View
+import com.hjq.bar.OnTitleBarListener
 import com.unicorn.csp.R
 import com.unicorn.csp.app.*
 import com.unicorn.csp.app.helper.DialogHelper
@@ -17,6 +19,18 @@ class ArticleAct : BaseAct() {
     }
 
     override fun bindIntent() {
+        titleBar.setOnTitleBarListener(object : OnTitleBarListener {
+            override fun onLeftClick(v: View?) {
+                finish()
+            }
+
+            override fun onRightClick(v: View?) {
+
+            }
+
+            override fun onTitleClick(v: View?) {
+            }
+        })
         getArticle()
     }
 

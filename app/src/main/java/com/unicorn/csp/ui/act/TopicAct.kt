@@ -1,9 +1,11 @@
 package com.unicorn.csp.ui.act
 
+import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.blankj.utilcode.util.ToastUtils
 import com.chad.library.adapter.base.BaseQuickAdapter
+import com.hjq.bar.OnTitleBarListener
 import com.jakewharton.rxbinding3.widget.textChangeEvents
 import com.unicorn.csp.R
 import com.unicorn.csp.app.*
@@ -21,7 +23,18 @@ class TopicAct : SimplePageAct<Reply, KVHolder>() {
 
     override fun bindIntent() {
         super.bindIntent()
+        titleBar.setOnTitleBarListener(object : OnTitleBarListener {
+            override fun onLeftClick(v: View?) {
+                finish()
+            }
 
+            override fun onRightClick(v: View?) {
+
+            }
+
+            override fun onTitleClick(v: View?) {
+            }
+        })
         mbCreateReply.safeClicks().subscribe { createReplyX() }
     }
 
