@@ -1,5 +1,6 @@
 package com.unicorn.csp.ui.act
 
+import com.blankj.utilcode.util.ToastUtils
 import com.unicorn.csp.R
 import com.unicorn.csp.app.*
 import com.unicorn.csp.app.helper.DialogHelper
@@ -13,14 +14,22 @@ class LoginAct : BaseAct() {
     override val layoutId = R.layout.act_login
 
     override fun initViews() {
-        etUsername.setText("13611840424")
-        etPassword.setText("111111")
     }
 
     override fun bindIntent() {
-        btnLogin.safeClicks().subscribe {
-            login()
+        mbLogin.safeClicks().subscribe { loginX() }
+    }
+
+    private fun loginX(){
+        if (etUsername.isEmpty()) {
+            ToastUtils.showShort("用户名不能为空")
+            return
         }
+        if (etPassword.isEmpty()) {
+            ToastUtils.showShort("密码不能为空")
+            return
+        }
+        login()
     }
 
     private fun login() {
