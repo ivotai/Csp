@@ -22,6 +22,7 @@
         </activity>
         <activity android:name=".ui.act.MainAct" />
         <activity android:name=".ui.act.ArticleAct" />
+        <activity android:name=".ui.act.CreateTopicAct" />
     </application>
 
 </manifest>
