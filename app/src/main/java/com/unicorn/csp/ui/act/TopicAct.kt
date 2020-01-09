@@ -21,6 +21,11 @@ import kotlinx.android.synthetic.main.act_topic.*
 
 class TopicAct : SimplePageAct<Reply, KVHolder>() {
 
+    override fun initViews() {
+        super.initViews()
+        mRecyclerView.addDefaultItemDecoration(1)
+    }
+
     override fun bindIntent() {
         super.bindIntent()
         titleBar.setOnTitleBarListener(object : OnTitleBarListener {
