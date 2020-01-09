@@ -12,6 +12,9 @@ import kotlinx.android.synthetic.main.act_article.*
 class ArticleAct : BaseAct() {
 
     override val layoutId = R.layout.act_article
+    override fun initViews() {
+        titleBar
+    }
 
     override fun bindIntent() {
         getArticle()

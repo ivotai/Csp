@@ -18,8 +18,6 @@ class ArticleFra : SimplePageFra<Article, KVHolder>() {
 
     override fun loadPage(pageNo: Int): Single<Response<Page<Article>>> = api.getArticle(pageNo = pageNo, category =  arguments!!.getString(Category)!!)
 
-    private val category by lazy { arguments!!.getString(Category)!! }
-
     override fun initViews() {
         super.initViews()
         simpleAdapter.addHeaderView(ArticleHeader(context!!, arguments!!.getString(Title)!!))

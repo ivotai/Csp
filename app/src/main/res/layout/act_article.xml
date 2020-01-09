@@ -10,7 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
-        app:backButton="false"
         app:title="文章标题"
         app:titleColor="@color/md_white"
         app:titleSize="18dp" />
