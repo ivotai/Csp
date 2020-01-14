@@ -7,7 +7,8 @@ data class Article(
     val objectId: String,
     val publishTime: Long,
     val publisher: String,
-    val title: String
+    val title: String,
+    val cover:String
 )
 
 data class Attachment(

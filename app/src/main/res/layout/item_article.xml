@@ -1,33 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/root"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
     <TextView
-        android:layout_marginTop="12dp"
-        android:layout_marginStart="12dp"
         android:id="@+id/tvTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="文章标题"
-        android:textColor="@color/md_grey_800"
-        android:textSize="18dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textColor="@color/md_black"
+        android:textSize="18dp" />
 
-    <jp.shts.android.library.TriangleLabelView
-        android:layout_width="12dp"
-        android:layout_height="12dp"
-        app:backgroundColor="@color/colorPrimary"
-        app:corner="leftBottom" />
-
-    <View
+    <ImageView
+        android:layout_marginTop="8dp"
+        android:id="@+id/ivImage"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorPrimary" />
+        android:layout_height="200dp"
+        android:scaleType="fitXY" />
+
+    <TextView
+        android:layout_marginTop="8dp"
+        android:id="@+id/tvPublishTime"
+        android:textSize="15dp"
+        android:text="2020-01-10"
+        android:textColor="@color/md_grey_500"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>
