@@ -15,6 +15,7 @@ import com.unicorn.csp.data.model.*
 import com.unicorn.csp.ui.adapter.ReplyAdapter
 import com.unicorn.csp.ui.base.KVHolder
 import com.unicorn.csp.ui.base.SimplePageAct
+import com.unicorn.csp.ui.header.TopicHeader
 import io.reactivex.Single
 import io.reactivex.rxkotlin.subscribeBy
 import kotlinx.android.synthetic.main.act_topic.*
@@ -24,6 +25,7 @@ class TopicAct : SimplePageAct<Reply, KVHolder>() {
     override fun initViews() {
         super.initViews()
         mRecyclerView.addDefaultItemDecoration(1)
+        simpleAdapter.addHeaderView(TopicHeader(context = this,topic = topic))
     }
 
     override fun bindIntent() {
