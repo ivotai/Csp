@@ -12,7 +12,6 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
         app:title="文章标题"
-        app:rightTitle="附件"
         app:titleColor="@color/md_white"
         app:titleSize="18dp" />
 
