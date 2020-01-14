@@ -3,7 +3,7 @@ package com.unicorn.csp.data.model
 import com.blankj.utilcode.util.ToastUtils
 
 open class Response<T>(
-    val message: String,
+    val message: String?,
     val success: Boolean,
     val data: T
 ) {

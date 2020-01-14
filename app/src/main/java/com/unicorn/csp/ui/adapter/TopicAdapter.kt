@@ -8,9 +8,6 @@ import com.unicorn.csp.app.safeClicks
 import com.unicorn.csp.data.model.Topic
 import com.unicorn.csp.ui.act.TopicAct
 import com.unicorn.csp.ui.base.KVHolder
-import kotlinx.android.synthetic.main.item_article.*
-import kotlinx.android.synthetic.main.item_article.root
-import kotlinx.android.synthetic.main.item_article.tvTitle
 import kotlinx.android.synthetic.main.item_topic.*
 import org.joda.time.DateTime
 
