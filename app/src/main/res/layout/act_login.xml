@@ -14,7 +14,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="学习平台登录"
+        app:title="登录"
         app:titleColor="@color/md_black"
         app:titleSize="18dp" />
 

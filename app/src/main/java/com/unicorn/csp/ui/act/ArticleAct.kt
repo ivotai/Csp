@@ -108,7 +108,7 @@ class ArticleAct : BaseAct() {
         OkHttpUtils
             .get()
             .url(fullUrl)
-//            .addHeader(Cookie, "${SESSION}=${Globals.session}")
+            .addHeader(Cookie, "${SESSION}=${Globals.session}")
             .build()
             .execute(object : FileCallBack(baseDir(), attachment.filename) {
                 override fun onResponse(response: File, id: Int) {
