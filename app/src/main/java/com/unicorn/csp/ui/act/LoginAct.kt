@@ -5,6 +5,7 @@ import com.unicorn.csp.R
 import com.unicorn.csp.app.*
 import com.unicorn.csp.app.helper.DialogHelper
 import com.unicorn.csp.app.helper.ExceptionHelper
+import com.unicorn.csp.app.helper.UpdateHelper
 import com.unicorn.csp.ui.base.BaseAct
 import io.reactivex.rxkotlin.subscribeBy
 import kotlinx.android.synthetic.main.act_login.*
@@ -49,7 +50,8 @@ class LoginAct : BaseAct() {
                         username = etUsername.trimText()
                         password = etPassword.trimText()
                     }
-                    toActAndFinish(MainAct::class.java)
+                    UpdateHelper.checkVersion(this)
+//                    toActAndFinish(MainAct::class.java)
                 },
                 onError = {
                     mask.dismiss()

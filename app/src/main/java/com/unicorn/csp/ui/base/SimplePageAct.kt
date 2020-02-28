@@ -57,7 +57,7 @@ abstract class SimplePageAct<Model, K : BaseViewHolder> : BaseAct() {
                     simpleAdapter.setNewData(it.data.content)
                     checkIsLoadAll(it.data)
                     // 在这里设置 empty view
-//                    simpleAdapter.setEmptyView(R.layout.ui_no_data, mRecyclerView)
+                    simpleAdapter.setEmptyView(R.layout.ui_no_data, mRecyclerView)
                 },
                 onError = {
                     mSwipeRefreshLayout.isRefreshing = false

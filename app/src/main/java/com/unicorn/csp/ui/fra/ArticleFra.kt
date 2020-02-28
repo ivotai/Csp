@@ -37,7 +37,7 @@ class ArticleFra : SimplePageFra2<KVHolder>() {
 
     override fun initViews() {
         super.initViews()
-        simpleAdapter.addHeaderView(ArticleHeader(context!!, arguments!!.getString(Title)!!))
+//        simpleAdapter.addHeaderView(ArticleHeader(context!!, arguments!!.getString(Title)!!))
     }
 
 }

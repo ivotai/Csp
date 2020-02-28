@@ -3,6 +3,7 @@ package com.unicorn.csp.data.api
 import com.unicorn.csp.app.Globals
 import com.unicorn.csp.app.defaultPageSize
 import com.unicorn.csp.data.model.*
+import io.reactivex.Observable
 import io.reactivex.Single
 import retrofit2.Call
 import retrofit2.http.*
@@ -46,6 +47,9 @@ interface SimpleApi {
         @Path("topicId") topicId: String,
         @Body createReplyParam: CreateReplyParam
     ): Single<Response<Any>>
+
+    @GET(value = "public/checkUpdate")
+    fun checkUpdate(@Query("version") version: String, @Query("id") id: String="1001"): Observable<CheckUpdateResponse>
 
 
 }
