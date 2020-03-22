@@ -55,7 +55,7 @@ interface SimpleApi {
     @GET(value = "logout")
     fun logout(): Single<Response<Any>>
 
-    @PUT("api/v1/system/user/modifyPassword")
+    @PUT("api/v1/app/modifyPassword")
     fun modifyPassword(@Body modifyPasswordParam: ModifyPasswordParam): Single<Response<Any>>
 
 }
