@@ -2,7 +2,9 @@ package com.unicorn.csp.ui.act
 
 import android.graphics.Color
 import android.graphics.drawable.Drawable
+import android.view.View
 import androidx.core.content.ContextCompat
+import com.hjq.bar.OnTitleBarListener
 import com.mikepenz.iconics.IconicsDrawable
 import com.mikepenz.iconics.typeface.IIcon
 import com.mikepenz.iconics.typeface.library.fontawesome.FontAwesome
@@ -12,6 +14,7 @@ import com.unicorn.csp.R
 import com.unicorn.csp.app.Globals
 import com.unicorn.csp.app.helper.ExceptionHelper
 import com.unicorn.csp.app.observeOnMain
+import com.unicorn.csp.app.startAct
 import com.unicorn.csp.app.toActAndFinish
 import com.unicorn.csp.ui.adapter.MainPagerAdapter
 import com.unicorn.csp.ui.base.BaseAct
@@ -70,6 +73,20 @@ class MainAct : BaseAct() {
         navigationController.addSimpleTabItemSelectedListener { index, _ ->
             titleBar.title = MainPagerAdapter.titles[index]
         }
+    }
+
+    override fun bindIntent() {
+        titleBar.setRightTitle("我的").setOnTitleBarListener(object : OnTitleBarListener {
+            override fun onLeftClick(v: View?) {
+            }
+
+            override fun onRightClick(v: View?) {
+                startAct(MyAct::class.java)
+            }
+
+            override fun onTitleClick(v: View?) {
+            }
+        })
     }
 
     private fun newItem(icon: IIcon, text: String) =

@@ -7,7 +7,7 @@ import kotlinx.android.synthetic.main.item_reply.*
 import org.ocpsoft.prettytime.PrettyTime
 import java.util.*
 
-class ReplyAdapter : MyAdapter<Reply, KVHolder>(R.layout.item_reply) {
+class ReplyAdapter : BaseAdapter<Reply, KVHolder>(R.layout.item_reply) {
 
     private val prettyTime =  PrettyTime()
 

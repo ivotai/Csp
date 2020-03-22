@@ -82,8 +82,8 @@ dependencies {
     implementation 'com.kaopiz:kprogresshud:1.2.0'
     implementation 'com.chibatching.kotpref:kotpref:2.9.2'
     implementation 'com.chibatching.kotpref:initializer:2.9.2'
-    implementation 'com.afollestad.material-dialogs:core:3.1.1'
-    implementation 'com.afollestad.material-dialogs:datetime:3.1.1'
+    implementation 'com.afollestad.material-dialogs:core:3.2.1'
+    implementation 'com.afollestad.material-dialogs:datetime:3.2.1'
     implementation 'com.facebook.stetho:stetho:1.5.1'
     implementation 'com.facebook.stetho:stetho-okhttp3:1.5.1'
     implementation 'me.majiajie:pager-bottom-tab-strip:2.3.0X'
@@ -93,6 +93,8 @@ dependencies {
     implementation 'com.github.shts:TriangleLabelView:1.1.2'
     implementation 'org.ocpsoft.prettytime:prettytime:4.0.1.Final'
     implementation 'com.zhy:okhttputils:2.6.2'
+    implementation 'com.flyco.roundview:FlycoRoundView_Lib:1.1.4@aar'
+    implementation 'de.hdodenhof:circleimageview:3.0.1'
 }
 
 androidExtensions {

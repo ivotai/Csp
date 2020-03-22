@@ -11,7 +11,7 @@ import com.unicorn.csp.ui.base.KVHolder
 import kotlinx.android.synthetic.main.item_topic.*
 import org.joda.time.DateTime
 
-class TopicAdapter : MyAdapter<Topic, KVHolder>(R.layout.item_topic) {
+class TopicAdapter : BaseAdapter<Topic, KVHolder>(R.layout.item_topic) {
 
     override fun convert(helper: KVHolder, item: Topic) {
         helper.apply {

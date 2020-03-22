@@ -3,8 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.unicorn.csp">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name="com.unicorn.csp.app.App"
         android:allowBackup="true"
@@ -26,6 +27,7 @@
         <activity android:name=".ui.act.ArticleAct" />
         <activity android:name=".ui.act.CreateTopicAct" />
         <activity android:name=".ui.act.TopicAct" />
+        <activity android:name=".ui.act.MyAct" />
     </application>
 
 </manifest>
