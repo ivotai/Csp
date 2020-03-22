@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.view.View
 import androidx.core.content.ContextCompat
+import com.blankj.utilcode.util.ActivityUtils
 import com.hjq.bar.OnTitleBarListener
 import com.mikepenz.iconics.IconicsDrawable
 import com.mikepenz.iconics.typeface.IIcon
@@ -16,8 +17,11 @@ import com.unicorn.csp.app.helper.ExceptionHelper
 import com.unicorn.csp.app.observeOnMain
 import com.unicorn.csp.app.startAct
 import com.unicorn.csp.app.toActAndFinish
+import com.unicorn.csp.data.event.LogoutEvent
 import com.unicorn.csp.ui.adapter.MainPagerAdapter
 import com.unicorn.csp.ui.base.BaseAct
+import com.unicorn.ticket.bs.app.RxBus
+import io.reactivex.functions.Consumer
 import io.reactivex.rxkotlin.subscribeBy
 import kotlinx.android.synthetic.main.act_main.*
 import me.majiajie.pagerbottomtabstrip.item.NormalItemView
@@ -86,6 +90,13 @@ class MainAct : BaseAct() {
 
             override fun onTitleClick(v: View?) {
             }
+        })
+    }
+
+    override fun registerEvent() {
+        RxBus.registerEvent(this, LogoutEvent::class.java, Consumer {
+            ActivityUtils.finishAllActivities()
+            startAct(LoginAct::class.java)
         })
     }
 

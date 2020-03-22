@@ -7,9 +7,8 @@ import com.unicorn.csp.R
 import com.unicorn.csp.app.*
 import com.unicorn.csp.app.helper.DialogHelper
 import com.unicorn.csp.app.helper.ExceptionHelper
-import com.unicorn.csp.data.event.RefreshTopicEvent
+import com.unicorn.csp.data.event.RefreshEvent
 import com.unicorn.csp.data.model.CreateTopicParam
-import com.unicorn.csp.data.model.Topic
 import com.unicorn.csp.ui.base.BaseAct
 import com.unicorn.ticket.bs.app.RxBus
 import io.reactivex.rxkotlin.subscribeBy
@@ -63,7 +62,7 @@ class CreateTopicAct : BaseAct() {
                     mask.dismiss()
                     if (it.failed) return@subscribeBy
                     ToastUtils.showShort("发帖成功")
-                    RxBus.post(RefreshTopicEvent())
+                    RxBus.post(RefreshEvent())
                     finish()
                 },
                 onError = {

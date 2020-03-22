@@ -6,13 +6,12 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.unicorn.csp.R
 import com.unicorn.csp.app.safeClicks
 import com.unicorn.csp.app.startAct
-import com.unicorn.csp.data.event.RefreshTopicEvent
+import com.unicorn.csp.data.event.RefreshEvent
 import com.unicorn.csp.data.model.Page
 import com.unicorn.csp.data.model.Response
 import com.unicorn.csp.data.model.Topic
 import com.unicorn.csp.ui.act.CreateTopicAct
 import com.unicorn.csp.ui.adapter.TopicAdapter
-import com.unicorn.csp.ui.base.BaseFra
 import com.unicorn.csp.ui.base.KVHolder
 import com.unicorn.csp.ui.base.SimplePageFra
 import com.unicorn.ticket.bs.app.RxBus
@@ -37,7 +36,7 @@ class TopicFra : SimplePageFra<Topic, KVHolder>() {
     }
 
     override fun registerEvent() {
-        RxBus.registerEvent(this, RefreshTopicEvent::class.java, Consumer {
+        RxBus.registerEvent(this, RefreshEvent::class.java, Consumer {
             loadFirstPage()
         })
     }
