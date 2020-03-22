@@ -51,5 +51,7 @@ interface SimpleApi {
     @GET(value = "public/checkUpdate")
     fun checkUpdate(@Query("version") version: String, @Query("id") id: String="1001"): Observable<CheckUpdateResponse>
 
+    @GET(value = "public/logout")
+    fun logout(): Observable<Any>
 
 }
