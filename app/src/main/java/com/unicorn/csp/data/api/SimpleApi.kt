@@ -51,8 +51,9 @@ interface SimpleApi {
     @GET(value = "public/checkUpdate")
     fun checkUpdate(@Query("version") version: String, @Query("id") id: String="1001"): Observable<CheckUpdateResponse>
 
+    @Headers("accept:application/json")
     @GET(value = "logout")
-    fun logout(): Single<Any>
+    fun logout(): Single<Response<Any>>
 
     @PUT("api/v1/system/user/modifyPassword")
     fun modifyPassword(@Body modifyPasswordParam: ModifyPasswordParam): Single<Response<Any>>

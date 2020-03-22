@@ -65,19 +65,6 @@ class ModifyPasswordAct : BaseAct() {
                         ExceptionHelper.showPrompt(it)
                     }
                 )
-//            val i = UserChangePwdReq(
-//                userMobile = Global.userInfo.userMobile,
-//                oldPwd = etOldPwd.pwd(),
-//                newPwd = etNewPwd.pwd()
-//            )
-//            userApi.changePwd(i).observeOnMain(this).subscribeBy(
-//                onSuccess = {
-//                    if (it.failed) return@subscribeBy
-//                    ToastUtils.showShort("密码已修改，请重新登录")
-//                    RxBus.post(NeedLoginEvent())
-//                },
-//                onError = Config.defaultOnError
-//            )
         }
 
         if (etOldPwd.isEmpty()) {

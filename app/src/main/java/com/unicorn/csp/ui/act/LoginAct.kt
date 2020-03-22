@@ -19,7 +19,10 @@ class LoginAct : BaseAct() {
             etUsername.setText(username)
             etPassword.setText(password)
         }
-        if (clearPassword) etPassword.setText("")
+        if (clearPassword) {
+            etPassword.setText("")
+            etPassword.requestFocus()
+        }
     }
 
     override fun bindIntent() {

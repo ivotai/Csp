@@ -101,18 +101,17 @@ class MainAct : BaseAct() {
             api.logout()
                 .observeOnMain(this)
                 .subscribeBy(
-                    onSuccess = {
-                        it
-                    },
-                    onError = {
+                    onSuccess = { response ->
                         mask.dismiss()
-                        ExceptionHelper.showPrompt(it)
-
+                        if (response.failed) return@subscribeBy
                         ActivityUtils.finishAllActivities()
                         Intent(this@MainAct, LoginAct::class.java).apply {
                             putExtra(Param, logoutEvent.clearPassword)
                         }.let { startActivity(it) }
-                        startAct(LoginAct::class.java)
+                    },
+                    onError = {
+                        mask.dismiss()
+                        ExceptionHelper.showPrompt(it)
                     }
                 )
         }
