@@ -1,11 +1,13 @@
 package com.unicorn.csp.ui.act
 
 import android.graphics.drawable.GradientDrawable
+import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.blankj.utilcode.util.ConvertUtils
+import com.hjq.bar.OnTitleBarListener
 import com.unicorn.csp.R
+import com.unicorn.csp.app.Globals
 import com.unicorn.csp.data.model.MyMenu
 import com.unicorn.csp.ui.adapter.MyAdapter
 import com.unicorn.csp.ui.base.BaseAct
@@ -19,6 +21,9 @@ class MyAct : BaseAct() {
             GradientDrawable.Orientation.TOP_BOTTOM,
             intArrayOf(colorPrimary, blue300)
         )
+
+        tvUsername.text = Globals.user.username
+        rtvCourtName.text = Globals.user.courtName
 
         fun initRecyclerView() {
             recyclerView.apply {
@@ -36,6 +41,18 @@ class MyAct : BaseAct() {
 
     override fun bindIntent() {
         simpleAdapter.setNewData(MyMenu.all)
+
+        titleBar.setOnTitleBarListener(object : OnTitleBarListener {
+            override fun onLeftClick(v: View?) {
+                finish()
+            }
+
+            override fun onRightClick(v: View?) {
+            }
+
+            override fun onTitleClick(v: View?) {
+            }
+        })
     }
 
     private val simpleAdapter = MyAdapter()
