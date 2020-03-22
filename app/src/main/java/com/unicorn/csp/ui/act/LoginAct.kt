@@ -19,6 +19,7 @@ class LoginAct : BaseAct() {
             etUsername.setText(username)
             etPassword.setText(password)
         }
+        if (clearPassword) etPassword.setText("")
     }
 
     override fun bindIntent() {
@@ -59,5 +60,7 @@ class LoginAct : BaseAct() {
                 }
             )
     }
+
+    private val clearPassword by lazy { intent.getBooleanExtra(Param, false) }
 
 }

@@ -1,3 +1,7 @@
 package com.unicorn.csp.data.event
 
-class LogoutEvent
+import java.io.Serializable
+
+data class LogoutEvent(
+    val clearPassword: Boolean = false
+) : Serializable

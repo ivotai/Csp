@@ -1,5 +1,6 @@
 package com.unicorn.csp.ui.act
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.view.View
@@ -12,18 +13,19 @@ import com.mikepenz.iconics.typeface.library.fontawesome.FontAwesome
 import com.mikepenz.iconics.utils.toIconicsColor
 import com.mikepenz.iconics.utils.toIconicsSizeDp
 import com.unicorn.csp.R
-import com.unicorn.csp.app.Globals
+import com.unicorn.csp.app.*
+import com.unicorn.csp.app.helper.DialogHelper
 import com.unicorn.csp.app.helper.ExceptionHelper
-import com.unicorn.csp.app.observeOnMain
-import com.unicorn.csp.app.startAct
-import com.unicorn.csp.app.toActAndFinish
+import com.unicorn.csp.app.helper.UpdateHelper
 import com.unicorn.csp.data.event.LogoutEvent
 import com.unicorn.csp.ui.adapter.MainPagerAdapter
 import com.unicorn.csp.ui.base.BaseAct
 import com.unicorn.ticket.bs.app.RxBus
 import io.reactivex.functions.Consumer
 import io.reactivex.rxkotlin.subscribeBy
+import kotlinx.android.synthetic.main.act_login.*
 import kotlinx.android.synthetic.main.act_main.*
+import kotlinx.android.synthetic.main.act_main.titleBar
 import me.majiajie.pagerbottomtabstrip.item.NormalItemView
 
 class MainAct : BaseAct() {
@@ -94,11 +96,31 @@ class MainAct : BaseAct() {
     }
 
     override fun registerEvent() {
+        fun logout(logoutEvent: LogoutEvent) {
+            val mask = DialogHelper.showMask(this)
+            api.logout()
+                .observeOnMain(this)
+                .subscribeBy(
+                    onSuccess = {
+                        it
+                    },
+                    onError = {
+                        mask.dismiss()
+                        ExceptionHelper.showPrompt(it)
+
+                        ActivityUtils.finishAllActivities()
+                        Intent(this@MainAct, LoginAct::class.java).apply {
+                            putExtra(Param, logoutEvent.clearPassword)
+                        }.let { startActivity(it) }
+                        startAct(LoginAct::class.java)
+                    }
+                )
+        }
         RxBus.registerEvent(this, LogoutEvent::class.java, Consumer {
-            ActivityUtils.finishAllActivities()
-            startAct(LoginAct::class.java)
+            logout(it)
         })
     }
+
 
     private fun newItem(icon: IIcon, text: String) =
         NormalItemView(this).apply {
