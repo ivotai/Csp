@@ -104,7 +104,7 @@ class ArticleAct : BaseAct() {
 
     private fun download(attachment: Attachment) {
         val mask = DialogHelper.showMask(this)
-        val fullUrl = "http://csp.seafa.kjgk.xyz:8000" + attachment.url
+        val fullUrl = baseUrl + attachment.url
         OkHttpUtils
             .get()
             .url(fullUrl)
