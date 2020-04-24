@@ -3,7 +3,6 @@ package com.unicorn.csp.ui.adapter
 import android.content.Intent
 import android.view.View
 import android.widget.ImageView
-import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter
 import com.chad.library.adapter.base.entity.MultiItemEntity

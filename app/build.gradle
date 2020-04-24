@@ -14,8 +14,13 @@ android {
         minSdkVersion 17
         targetSdkVersion 22
         versionCode 1
-        versionName "1.0.1"
+        versionName "1.0.2"
         multiDexEnabled true
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [rxhttp_rxjava: 'rxjava2']  //可传入rxjava2、rxjava3
+            }
+        }
     }
     signingConfigs {
         release {
@@ -56,9 +61,10 @@ dependencies {
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-alpha03'
     implementation 'com.google.android.material:material:1.2.0-alpha03'
     // rxjava2
-    implementation 'io.reactivex.rxjava2:rxjava:2.2.16'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.19'
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
     implementation 'io.reactivex.rxjava2:rxkotlin:2.4.0'
+    implementation 'com.ljx.rxlife2:rxlife-rxjava:2.0.0'
     implementation 'com.jakewharton.rxbinding3:rxbinding:3.1.0'
     implementation 'com.github.florent37:rxlifecycle:2.0.5'
     // squareup
@@ -82,12 +88,13 @@ dependencies {
     implementation 'com.kaopiz:kprogresshud:1.2.0'
     implementation 'com.chibatching.kotpref:kotpref:2.9.2'
     implementation 'com.chibatching.kotpref:initializer:2.9.2'
-    implementation 'com.afollestad.material-dialogs:core:3.2.1'
-    implementation 'com.afollestad.material-dialogs:datetime:3.2.1'
+    implementation 'com.afollestad.material-dialogs:core:3.3.0'
+    implementation 'com.afollestad.material-dialogs:datetime:3.3.0'
     implementation 'com.facebook.stetho:stetho:1.5.1'
     implementation 'com.facebook.stetho:stetho-okhttp3:1.5.1'
     implementation 'me.majiajie:pager-bottom-tab-strip:2.3.0X'
     implementation 'com.hjq:titlebar:6.0'
+    //noinspection GradleDependency
     implementation "com.mikepenz:iconics-core:4.0.2"
     implementation 'com.mikepenz:fontawesome-typeface:5.9.0.0-kotlin@aar'
     implementation 'com.github.shts:TriangleLabelView:1.1.2'
@@ -95,6 +102,9 @@ dependencies {
     implementation 'com.zhy:okhttputils:2.6.2'
     implementation 'com.flyco.roundview:FlycoRoundView_Lib:1.1.4@aar'
     implementation 'de.hdodenhof:circleimageview:3.0.1'
+    implementation 'com.github.barteksc:android-pdf-viewer:3.2.0-beta.1'
+    implementation 'com.ljx.rxhttp:rxhttp:2.2.0'
+    kapt 'com.ljx.rxhttp:rxhttp-compiler:2.2.0'
 }
 
 androidExtensions {

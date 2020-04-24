@@ -29,6 +29,7 @@
         <activity android:name=".ui.act.TopicAct" />
         <activity android:name=".ui.act.MyAct" />
         <activity android:name=".ui.act.ModifyPasswordAct" />
+        <activity android:name=".ui.act.ArticlePdfAct" />
     </application>
 
 </manifest>

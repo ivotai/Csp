@@ -1,5 +1,6 @@
 package com.unicorn.csp.ui.act
 
+import android.content.Intent
 import android.os.Environment
 import android.view.View
 import com.afollestad.materialdialogs.MaterialDialog
@@ -113,7 +114,9 @@ class ArticleAct : BaseAct() {
             .execute(object : FileCallBack(baseDir(), attachment.filename) {
                 override fun onResponse(response: File, id: Int) {
                     mask.dismiss()
-                    FileUtils2.openFile(this@ArticleAct, file = response)
+
+                    startPdf()
+//                    FileUtils2.openFile(this@ArticleAct, file = response)
                 }
 
                 override fun onError(call: Call?, e: Exception?, id: Int) {
@@ -127,4 +130,9 @@ class ArticleAct : BaseAct() {
 
     lateinit var article: Article
 
+    private fun startPdf(){
+        Intent(this,ArticlePdfAct::class.java).apply {
+            putExtra(Param,article)
+        }.let { startActivity(it) }
+    }
 }
