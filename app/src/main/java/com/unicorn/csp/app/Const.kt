@@ -6,8 +6,8 @@ const val defaultPageSize = 10
 
 val defaultPaddingPx = ConvertUtils.dp2px(16f)
 
-//const val baseUrl = "http://csp.seafa.kjgk.xyz:8000/"       // 测试
-const val baseUrl = "http://58.16.65.7:8080"               // 正式
+const val baseUrl = "http://csp.seafa.kjgk.xyz:8000"       // 测试
+//const val baseUrl = "http://58.16.65.7:8080"               // 正式
 
 const val displayDateFormat = "yyyy年MM月dd日"
 
@@ -20,6 +20,5 @@ const val SESSION = "SESSION"
 
 const val Title = "Title"
 const val Category = "Category"
-const val ObjectId = "ObjectId"
 const val Topic = "Topic"
 const val Param = "Param"

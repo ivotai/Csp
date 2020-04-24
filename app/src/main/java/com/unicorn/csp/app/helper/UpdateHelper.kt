@@ -42,7 +42,6 @@ object UpdateHelper {
         OkHttpUtils
             .get()
             .url(apkUrl)
-//            .addHeader(Cookie, "${SESSION}=${Globals.session}")
             .build()
             .execute(object : FileCallBack(activity.cacheDir.path, "Csp.apk") {
                 override fun onResponse(response: File, id: Int) {

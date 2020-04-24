@@ -4,6 +4,7 @@ import android.view.View
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.list.listItems
 import com.blankj.utilcode.util.FileUtils
+import com.blankj.utilcode.util.IntentUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.hjq.bar.OnTitleBarListener
 import com.kaopiz.kprogresshud.KProgressHUD
@@ -78,7 +79,6 @@ abstract class BaseArticleAct : BaseAct() {
                 }
             })
         }
-//        webView.loadData(content, "text/html", "utf-8")
     }
 
     private fun showAttachmentDialog() {

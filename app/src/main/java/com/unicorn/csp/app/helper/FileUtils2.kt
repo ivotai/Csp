@@ -4,7 +4,10 @@ import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
+import androidx.core.content.FileProvider
 import com.blankj.utilcode.util.ToastUtils
+import com.blankj.utilcode.util.Utils
 import java.io.File
 
 class FileUtils2 {
@@ -19,8 +22,24 @@ class FileUtils2 {
                 intent.action = Intent.ACTION_VIEW
                 //获取文件file的MIME类型
                 val type = getMIMEType(file)
+
+                val data:Uri
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
+                    data = Uri.fromFile(file)
+                } else {
+                    val authority = Utils.getApp()
+                        .packageName + ".utilcode.provider"
+                    data = FileProvider.getUriForFile(
+                        Utils.getApp(),
+                        authority,
+                        file
+                    )
+                    intent.flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
+                }
+
+
                 //设置intent的data和Type属性。
-                intent.setDataAndType(/*uri*/Uri.fromFile(file), type)
+                intent.setDataAndType(/*uri*/data, type)
                 //跳转
                 context.startActivity(intent)
                 //	    Intent.createChooser(intent, "请选择对应的软件打开该附件！");

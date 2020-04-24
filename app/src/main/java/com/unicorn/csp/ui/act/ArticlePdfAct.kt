@@ -1,27 +1,18 @@
 package com.unicorn.csp.ui.act
 
-import android.net.Uri
-import com.blankj.utilcode.util.AppUtils
 import com.kaopiz.kprogresshud.KProgressHUD
-import com.unicorn.csp.app.Param
-import com.unicorn.csp.data.model.Article
-import com.unicorn.csp.ui.base.BaseAct
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.functions.Consumer
 import io.reactivex.rxkotlin.subscribeBy
 import kotlinx.android.synthetic.main.act_article_pdf.*
-import rxhttp.RxHttpPlugins
 import rxhttp.wrapper.param.RxHttp
 import java.io.File
 
-class ArticlePdfAct : BaseAct() {
+class ArticlePdfAct : BaseArticleAct() {
 
-    override fun initViews() {
-        titleBar.title = article.title
-    }
-
-    override fun bindIntent() {
-        download()
+    override fun doAfterArticlePrepared() {
+        val first = article.attachments[0]
+        if (first.exists) pdfView.fromFile(first.file).load()
+        else download()
     }
 
     private fun download() {
@@ -49,8 +40,6 @@ class ArticlePdfAct : BaseAct() {
                 }
             )
     }
-
-    private val article by lazy { intent.getSerializableExtra(Param) as Article }
 
     override val layoutId: Int = com.unicorn.csp.R.layout.act_article_pdf
 

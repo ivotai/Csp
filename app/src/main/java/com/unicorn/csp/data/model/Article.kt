@@ -24,7 +24,7 @@ data class Attachment(
 ) : Serializable {
     val extension get() = FileUtils.getFileExtension(filename)
     val uniqueFilename get() = "$attachmentId.$extension"
-    val path get() = "${Holder.appComponent.context().filesDir}/$uniqueFilename"
+    val path get() = "${Holder.appComponent.context().cacheDir}/$uniqueFilename"
     val file get() = File(path)
     val exists get() = file.exists()
 }
