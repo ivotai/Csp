@@ -9,8 +9,10 @@ import com.unicorn.csp.app.toActAndFinish
 import com.unicorn.csp.ui.act.MainAct
 import com.zhy.http.okhttp.OkHttpUtils
 import com.zhy.http.okhttp.callback.FileCallBack
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
 import okhttp3.Call
+import rxhttp.wrapper.param.RxHttp
 import java.io.File
 
 object UpdateHelper {
@@ -33,31 +35,27 @@ object UpdateHelper {
     }
 
     private fun download(activity: AppCompatActivity, apkUrl: String) {
-        val mask = KProgressHUD.create(activity)
+        val progressMask = KProgressHUD.create(activity)
             .setStyle(KProgressHUD.Style.BAR_DETERMINATE)
             .setCancellable(true)
             .setDimAmount(0.5f)
             .setMaxProgress(100)
             .show()
-        OkHttpUtils
-            .get()
-            .url(apkUrl)
-            .build()
-            .execute(object : FileCallBack(activity.cacheDir.path, "Csp.apk") {
-                override fun onResponse(response: File, id: Int) {
-                    mask.dismiss()
-                    AppUtils.installApp(response)
+        RxHttp.get(apkUrl)
+            .asDownload(
+                "${Holder.appComponent.context().filesDir.path}/vehicle.apk",
+                { progressMask.setProgress(it.progress) },
+                AndroidSchedulers.mainThread()
+            )
+            .subscribeBy(
+                onNext = {
+                    progressMask.dismiss()
+                    AppUtils.installApp(File(it))
+                },
+                onError = {
+                    progressMask.dismiss()
                 }
-
-                override fun inProgress(progress: Float, total: Long, id: Int) {
-                    val p = (100 * progress).toInt()
-                    mask.setProgress(p)
-                }
-
-                override fun onError(call: Call?, e: Exception?, id: Int) {
-                    mask.dismiss()
-                }
-            })
+            )
     }
 
 }

@@ -15,6 +15,7 @@ import com.unicorn.csp.data.model.ArticleWithImage
 import com.unicorn.csp.data.model.noImage
 import com.unicorn.csp.data.model.withImage
 import com.unicorn.csp.ui.act.ArticleAct
+import com.unicorn.csp.ui.act.ArticleVideoAct
 import com.unicorn.csp.ui.base.KVHolder
 import org.joda.time.DateTime
 import java.util.ArrayList
@@ -36,7 +37,7 @@ class MultiArticleAdapter: BaseMultiItemQuickAdapter<MultiItemEntity,KVHolder>(A
                 Glide.with(mContext).load(article.cover).into(ivImage)
                 helper.setText(R.id.tvPublishTime,DateTime(article.publishTime).toString(displayDateFormat))
                 helper.getView<View>(R.id.root).safeClicks().subscribe {
-                    Intent(mContext, ArticleAct::class.java).apply {
+                    Intent(mContext, ArticleVideoAct::class.java).apply {
                         putExtra(Param, article.objectId)
                     }.let { mContext.startActivity(it) }
                 }
@@ -47,7 +48,7 @@ class MultiArticleAdapter: BaseMultiItemQuickAdapter<MultiItemEntity,KVHolder>(A
                 helper.setText(R.id.tvTitle,article.title)
                 helper.setText(R.id.tvPublishTime,DateTime(article.publishTime).toString(displayDateFormat))
                 helper.getView<View>(R.id.root).safeClicks().subscribe {
-                    Intent(mContext, ArticleAct::class.java).apply {
+                    Intent(mContext, ArticleVideoAct::class.java).apply {
                         putExtra(Param, article.objectId)
                     }.let { mContext.startActivity(it) }
                 }
