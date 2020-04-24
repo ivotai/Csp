@@ -11,6 +11,4 @@ object Globals {
 
     lateinit var loginResponse: LoginResponse
 
-    var needClearPwd = false
-
 }

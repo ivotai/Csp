@@ -8,6 +8,7 @@ import com.chad.library.adapter.base.BaseMultiItemQuickAdapter
 import com.chad.library.adapter.base.entity.MultiItemEntity
 import com.unicorn.csp.R
 import com.unicorn.csp.app.ObjectId
+import com.unicorn.csp.app.Param
 import com.unicorn.csp.app.displayDateFormat
 import com.unicorn.csp.app.safeClicks
 import com.unicorn.csp.data.model.ArticleNoImage
@@ -37,7 +38,7 @@ class MultiArticleAdapter: BaseMultiItemQuickAdapter<MultiItemEntity,KVHolder>(A
                 helper.setText(R.id.tvPublishTime,DateTime(article.publishTime).toString(displayDateFormat))
                 helper.getView<View>(R.id.root).safeClicks().subscribe {
                     Intent(mContext, ArticleAct::class.java).apply {
-                        putExtra(ObjectId, article.objectId)
+                        putExtra(Param, article.objectId)
                     }.let { mContext.startActivity(it) }
                 }
             }
@@ -48,7 +49,7 @@ class MultiArticleAdapter: BaseMultiItemQuickAdapter<MultiItemEntity,KVHolder>(A
                 helper.setText(R.id.tvPublishTime,DateTime(article.publishTime).toString(displayDateFormat))
                 helper.getView<View>(R.id.root).safeClicks().subscribe {
                     Intent(mContext, ArticleAct::class.java).apply {
-                        putExtra(ObjectId, article.objectId)
+                        putExtra(Param, article.objectId)
                     }.let { mContext.startActivity(it) }
                 }
             }

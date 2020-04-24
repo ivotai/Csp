@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.unicorn.csp">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -12,10 +11,12 @@
         android:icon="@mipmap/logo"
         android:label="贵州智慧法院进行时"
         android:roundIcon="@mipmap/logo"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
-        tools:replace="android:label">
+        tools:replace="android:label"
+        tools:targetApi="n">
         <activity android:name="com.unicorn.csp.ui.act.LoginAct">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

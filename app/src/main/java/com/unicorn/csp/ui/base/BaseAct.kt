@@ -2,7 +2,7 @@ package com.unicorn.csp.ui.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.unicorn.csp.app.di.ComponentHolder
+import com.unicorn.csp.app.di.Holder
 
 abstract class BaseAct : AppCompatActivity(), UI {
 
@@ -27,6 +27,6 @@ abstract class BaseAct : AppCompatActivity(), UI {
     override fun registerEvent() {
     }
 
-    protected val api = ComponentHolder.appComponent.api()
+    protected val api = Holder.appComponent.api()
 
 }

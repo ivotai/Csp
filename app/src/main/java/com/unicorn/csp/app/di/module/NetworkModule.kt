@@ -1,6 +1,5 @@
 package com.unicorn.csp.app.di.module
 
-import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.unicorn.csp.app.baseUrl
 import com.unicorn.csp.app.helper.NetworkHelper
 import dagger.Module
@@ -37,7 +36,6 @@ class NetworkModule {
             .addInterceptor(HttpLoggingInterceptor().apply {
                 level = HttpLoggingInterceptor.Level.BODY
             })
-            .addNetworkInterceptor(StethoInterceptor())
         return builder.build()
     }
 

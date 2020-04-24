@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.unicorn.csp.app.di.ComponentHolder
+import com.unicorn.csp.app.di.Holder
 
 abstract class BaseFra : Fragment(), UI {
 
@@ -35,6 +35,6 @@ abstract class BaseFra : Fragment(), UI {
     override fun registerEvent() {
     }
 
-    protected val api = ComponentHolder.appComponent.api()
+    protected val api = Holder.appComponent.api()
 
 }

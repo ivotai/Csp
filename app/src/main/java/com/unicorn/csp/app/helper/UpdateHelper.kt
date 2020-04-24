@@ -3,9 +3,8 @@ package com.unicorn.csp.app.helper
 import androidx.appcompat.app.AppCompatActivity
 import com.blankj.utilcode.util.AppUtils
 import com.kaopiz.kprogresshud.KProgressHUD
-import com.unicorn.csp.app.di.ComponentHolder
+import com.unicorn.csp.app.di.Holder
 import com.unicorn.csp.app.observeOnMain
-import com.unicorn.csp.app.startAct
 import com.unicorn.csp.app.toActAndFinish
 import com.unicorn.csp.ui.act.MainAct
 import com.zhy.http.okhttp.OkHttpUtils
@@ -17,7 +16,7 @@ import java.io.File
 object UpdateHelper {
 
     fun checkVersion(activity: AppCompatActivity) {
-        val api = ComponentHolder.appComponent.api()
+        val api = Holder.appComponent.api()
         api.checkUpdate(version = AppUtils.getAppVersionName())
             .observeOnMain(activity)
             .subscribeBy(

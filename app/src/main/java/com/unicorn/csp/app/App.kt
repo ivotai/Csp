@@ -2,7 +2,7 @@ package com.unicorn.csp.app
 
 import androidx.multidex.MultiDexApplication
 import com.chibatching.kotpref.Kotpref
-import com.facebook.stetho.Stetho
+import com.unicorn.csp.app.di.Holder
 
 class App : MultiDexApplication() {
 
@@ -12,8 +12,8 @@ class App : MultiDexApplication() {
     }
 
     private fun init() {
+        Holder.init(this)
         Kotpref.init(this)
-        Stetho.initializeWithDefaults(this)
     }
 
 }

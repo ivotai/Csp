@@ -3,7 +3,7 @@ package com.unicorn.csp.app.helper
 import com.unicorn.csp.app.Cookie
 import com.unicorn.csp.app.Globals
 import com.unicorn.csp.app.SESSION
-import com.unicorn.csp.app.di.ComponentHolder
+import com.unicorn.csp.app.di.Holder
 import okhttp3.Interceptor
 import okhttp3.Response
 
@@ -23,6 +23,6 @@ object NetworkHelper {
             .let { chain.proceed(it) }
     }
 
-    private val api by lazy { ComponentHolder.appComponent.api() }
+    private val api by lazy { Holder.appComponent.api() }
 
 }

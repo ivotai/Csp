@@ -1,6 +1,9 @@
 package com.unicorn.csp.data.model
 
+import com.blankj.utilcode.util.FileUtils
 import com.chad.library.adapter.base.entity.MultiItemEntity
+import com.unicorn.csp.app.di.Holder
+import java.io.File
 import java.io.Serializable
 
 data class Article(
@@ -18,7 +21,13 @@ data class Attachment(
     val attachmentId: String,
     val filename: String,
     val url: String
-) : Serializable
+) : Serializable {
+    val extension get() = FileUtils.getFileExtension(filename)
+    val uniqueFilename get() = "$attachmentId.$extension"
+    val path get() = "${Holder.appComponent.context().filesDir}/$uniqueFilename"
+    val file get() = File(path)
+    val exists get() = file.exists()
+}
 
 const val withImage = 0
 const val noImage = 1

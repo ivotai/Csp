@@ -4,7 +4,6 @@ import android.net.Uri
 import com.blankj.utilcode.util.AppUtils
 import com.kaopiz.kprogresshud.KProgressHUD
 import com.unicorn.csp.app.Param
-import com.unicorn.csp.app.di.component.DaggerAppComponent.create
 import com.unicorn.csp.data.model.Article
 import com.unicorn.csp.ui.base.BaseAct
 import io.reactivex.android.schedulers.AndroidSchedulers
