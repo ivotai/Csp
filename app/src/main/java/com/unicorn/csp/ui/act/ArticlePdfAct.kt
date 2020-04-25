@@ -12,7 +12,6 @@ import io.reactivex.rxkotlin.subscribeBy
 import kotlinx.android.synthetic.main.act_article_pdf.*
 import rxhttp.wrapper.exception.HttpStatusCodeException
 import rxhttp.wrapper.param.RxHttp
-import java.io.File
 
 class ArticlePdfAct : BaseArticleAct() {
 

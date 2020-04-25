@@ -19,7 +19,7 @@ import tv.danmaku.ijk.media.exo2.Exo2PlayerManager
 class ArticleVideoAct : BaseArticleAct() {
 
     override fun doAfterArticlePrepared() {
-        webView.loadData(article.content, "text/html", "utf-8")
+        webView.loadDataWithBaseURL(null, article.content, "text/html", "utf-8", null);
         prepareVideo()
     }
 
@@ -32,7 +32,7 @@ class ArticleVideoAct : BaseArticleAct() {
 
     private fun prepareVideo() {
         val video = article.video
-        var url = baseUrl + video.url
+        val url = video.fullUrl
 //        url = "http://csp.seafa.kjgk.xyz:8000/dist/demo.mp4"
 
 //        url = "http://test.seafa.kjgk.xyz:8000/csp/test/mp4"

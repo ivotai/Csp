@@ -2,6 +2,7 @@ package com.unicorn.csp.data.model
 
 import com.blankj.utilcode.util.FileUtils
 import com.chad.library.adapter.base.entity.MultiItemEntity
+import com.unicorn.csp.app.baseUrl
 import com.unicorn.csp.app.di.Holder
 import java.io.File
 import java.io.Serializable
@@ -30,6 +31,7 @@ data class Attachment(
     val path get() = "${Holder.appComponent.context().cacheDir}/$uniqueFilename"
     val file get() = File(path)
     val exists get() = file.exists()
+    val fullUrl get() = baseUrl + url
 }
 
 const val withImage = 0
