@@ -10,17 +10,15 @@ import com.unicorn.csp.R
 import com.unicorn.csp.app.Param
 import com.unicorn.csp.app.displayDateFormat
 import com.unicorn.csp.app.safeClicks
-import com.unicorn.csp.data.model.ArticleNoImage
-import com.unicorn.csp.data.model.ArticleWithImage
-import com.unicorn.csp.data.model.noImage
-import com.unicorn.csp.data.model.withImage
+import com.unicorn.csp.data.model.*
 import com.unicorn.csp.ui.act.ArticleAct
+import com.unicorn.csp.ui.act.ArticlePdfAct
 import com.unicorn.csp.ui.act.ArticleVideoAct
 import com.unicorn.csp.ui.base.KVHolder
 import org.joda.time.DateTime
 import java.util.ArrayList
 
-class MultiArticleAdapter: BaseMultiItemQuickAdapter<MultiItemEntity,KVHolder>(ArrayList()){
+class MultiArticleAdapter : BaseMultiItemQuickAdapter<MultiItemEntity, KVHolder>(ArrayList()) {
 
     init {
         addItemType(withImage, R.layout.item_article_with_image)
@@ -28,16 +26,19 @@ class MultiArticleAdapter: BaseMultiItemQuickAdapter<MultiItemEntity,KVHolder>(A
     }
 
     override fun convert(helper: KVHolder, item: MultiItemEntity?) {
-        when(item!!.itemType){
-            withImage ->  {
+        when (item!!.itemType) {
+            withImage -> {
                 item as ArticleWithImage
                 val article = item.article
-                helper.setText(R.id.tvTitle,article.title)
+                helper.setText(R.id.tvTitle, article.title)
                 val ivImage = helper.getView<ImageView>(R.id.ivImage)
                 Glide.with(mContext).load(article.cover).into(ivImage)
-                helper.setText(R.id.tvPublishTime,DateTime(article.publishTime).toString(displayDateFormat))
+                helper.setText(
+                    R.id.tvPublishTime,
+                    DateTime(article.publishTime).toString(displayDateFormat)
+                )
                 helper.getView<View>(R.id.root).safeClicks().subscribe {
-                    Intent(mContext, ArticleVideoAct::class.java).apply {
+                    Intent(mContext, getActClassByArticle(item.article)).apply {
                         putExtra(Param, article.objectId)
                     }.let { mContext.startActivity(it) }
                 }
@@ -45,15 +46,24 @@ class MultiArticleAdapter: BaseMultiItemQuickAdapter<MultiItemEntity,KVHolder>(A
             noImage -> {
                 item as ArticleNoImage
                 val article = item.article
-                helper.setText(R.id.tvTitle,article.title)
-                helper.setText(R.id.tvPublishTime,DateTime(article.publishTime).toString(displayDateFormat))
+                helper.setText(R.id.tvTitle, article.title)
+                helper.setText(
+                    R.id.tvPublishTime,
+                    DateTime(article.publishTime).toString(displayDateFormat)
+                )
                 helper.getView<View>(R.id.root).safeClicks().subscribe {
-                    Intent(mContext, ArticleVideoAct::class.java).apply {
+                    Intent(mContext, getActClassByArticle(item.article)).apply {
                         putExtra(Param, article.objectId)
                     }.let { mContext.startActivity(it) }
                 }
             }
         }
+    }
+
+    private fun getActClassByArticle(article: Article) = when (article.type) {
+        1 -> ArticleAct::class.java
+        2 -> ArticleVideoAct::class.java
+        else -> ArticlePdfAct::class.java
     }
 
 }

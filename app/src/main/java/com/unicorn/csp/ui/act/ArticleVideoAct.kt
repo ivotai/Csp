@@ -5,9 +5,16 @@ import android.view.View
 import com.shuyu.gsyvideoplayer.GSYVideoManager
 import com.shuyu.gsyvideoplayer.builder.GSYVideoOptionBuilder
 import com.shuyu.gsyvideoplayer.listener.GSYSampleCallBack
+import com.shuyu.gsyvideoplayer.player.PlayerFactory
 import com.shuyu.gsyvideoplayer.utils.OrientationUtils
 import com.unicorn.csp.R
+import com.unicorn.csp.app.Cookie
+import com.unicorn.csp.app.Globals
+import com.unicorn.csp.app.SESSION
+import com.unicorn.csp.app.baseUrl
+import com.unicorn.csp.data.model.ArticleNoImage
 import kotlinx.android.synthetic.main.act_article_video.*
+import tv.danmaku.ijk.media.exo2.Exo2PlayerManager
 
 class ArticleVideoAct : BaseArticleAct() {
 
@@ -24,8 +31,11 @@ class ArticleVideoAct : BaseArticleAct() {
     private var orientationUtils: OrientationUtils? = null
 
     private fun prepareVideo() {
-        val url = "http://csp.seafa.kjgk.xyz:8000/dist/demo.mp4"
+        val video = article.video
+        var url = baseUrl + video.url
+//        url = "http://csp.seafa.kjgk.xyz:8000/dist/demo.mp4"
 
+//        url = "http://test.seafa.kjgk.xyz:8000/csp/test/mp4"
         //增加封面
 //        val imageView = ImageView(this)
 //        imageView.scaleType = ImageView.ScaleType.CENTER_CROP
@@ -41,6 +51,9 @@ class ArticleVideoAct : BaseArticleAct() {
         orientationUtils!!.isEnable = false
         val gsyVideoOption = GSYVideoOptionBuilder()
         gsyVideoOption
+            .setMapHeadData(HashMap<String, String>().apply {
+                put(Cookie, "$SESSION=${Globals.session}")
+            })
 //            .setThumbImageView(imageView)
             .setIsTouchWiget(true)
             .setRotateViewAuto(false)
@@ -49,7 +62,7 @@ class ArticleVideoAct : BaseArticleAct() {
             .setShowFullAnimation(false)
             .setNeedLockFull(true)
             .setUrl(url)
-            .setCacheWithPlay(false)
+            .setCacheWithPlay(true)
             .setVideoTitle(article.title)
             .setVideoAllCallBack(object : GSYSampleCallBack() {
                 override fun onPrepared(url: String, vararg objects: Any) {
@@ -80,6 +93,8 @@ class ArticleVideoAct : BaseArticleAct() {
                 //第一个true是否需要隐藏actionbar，第二个true是否需要隐藏statusbar
                 videoPlayer!!.startWindowFullscreen(this, true, true)
             }
+        // 自动播放
+        videoPlayer.startPlayLogic()
     }
 
     override fun onBackPressed() {

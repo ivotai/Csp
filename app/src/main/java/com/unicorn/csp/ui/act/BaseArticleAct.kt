@@ -117,7 +117,7 @@ abstract class BaseArticleAct : BaseAct() {
                     progressMask.dismiss()
                     if (it is HttpStatusCodeException) {
                         if (it.statusCode == "401")
-                            ToastUtils.showLong("登陆超时，请重新登陆以查看附件")
+                            ToastUtils.showLong("登陆超时，请重新登陆")
                     }
                 }
             )

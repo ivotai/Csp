@@ -14,7 +14,10 @@ data class Article(
     val publishTime: Long,
     val publisher: String,
     val title: String,
-    val cover: String
+    val cover: String,
+    val type: Int,          // 1=图文，2=图文+视频，3=pdf
+    val pdf: Attachment,
+    val video: Attachment
 ) : Serializable
 
 data class Attachment(
@@ -22,8 +25,8 @@ data class Attachment(
     val filename: String,
     val url: String
 ) : Serializable {
-    val extension get() = FileUtils.getFileExtension(filename)
-    val uniqueFilename get() = "$attachmentId.$extension"
+    private val extension get() = FileUtils.getFileExtension(filename)
+    private val uniqueFilename get() = "$attachmentId.$extension"
     val path get() = "${Holder.appComponent.context().cacheDir}/$uniqueFilename"
     val file get() = File(path)
     val exists get() = file.exists()
