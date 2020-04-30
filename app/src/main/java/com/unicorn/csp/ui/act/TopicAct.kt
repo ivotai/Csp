@@ -26,6 +26,8 @@ class TopicAct : SimplePageAct<Reply, KVHolder>() {
         super.initViews()
         mRecyclerView.addDefaultItemDecoration(1)
         simpleAdapter.addHeaderView(TopicHeader(context = this,topic = topic))
+        // 当空数据时显示空布局和HeaderView
+        simpleAdapter.setHeaderAndEmpty(true)
     }
 
     override fun bindIntent() {
