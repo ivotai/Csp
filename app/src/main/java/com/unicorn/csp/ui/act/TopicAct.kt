@@ -77,7 +77,7 @@ class TopicAct : SimplePageAct<Reply, KVHolder>() {
     override val simpleAdapter: BaseQuickAdapter<Reply, KVHolder> = ReplyAdapter()
 
     override fun loadPage(pageNo: Int): Single<Response<Page<Reply>>> =
-        api.getReply(topicId = topic.objectId, pageNo = pageNo)
+        api.getReply(topicId = topic.objectId, page = pageNo)
 
     private val topic by lazy { intent.getSerializableExtra(Topic) as Topic }
 

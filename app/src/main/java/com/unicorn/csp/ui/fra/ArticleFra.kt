@@ -18,7 +18,7 @@ class ArticleFra : SimplePageFra2<KVHolder>() {
         MultiArticleAdapter()
 
     override fun loadPage(pageNo: Int): Single<Response<Page<MultiItemEntity>>> =
-        api.getArticle(pageNo = pageNo, category = arguments!!.getString(Category)!!)
+        api.getArticle(page = pageNo, category = arguments!!.getString(Category)!!)
             .map {
                 val page = Page(
                     content = it.data.content.map { article ->

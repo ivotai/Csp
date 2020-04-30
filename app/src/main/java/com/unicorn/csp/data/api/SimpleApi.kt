@@ -18,7 +18,7 @@ interface SimpleApi {
 
     @GET("api/v1/app/article")
     fun getArticle(
-        @Query("pageNo") pageNo: Int,
+        @Query("page") page: Int,
         @Query("pageSize") pageSize: Int = defaultPageSize,
         @Query("category") category: String
     ): Single<Response<Page<Article>>>
@@ -31,14 +31,14 @@ interface SimpleApi {
 
     @GET("api/v1/app/topic")
     fun getTopic(
-        @Query("pageNo") pageNo: Int,
+        @Query("page") page: Int,
         @Query("pageSize") pageSize: Int = defaultPageSize
     ): Single<Response<Page<Topic>>>
 
     @GET("api/v1/app/topic/{topicId}/reply")
     fun getReply(
         @Path("topicId") topicId: String,
-        @Query("pageNo") pageNo: Int,
+        @Query("page") page: Int,
         @Query("pageSize") pageSize: Int = defaultPageSize
     ): Single<Response<Page<Reply>>>
 

@@ -24,7 +24,7 @@ class TopicFra : SimplePageFra<Topic, KVHolder>() {
     override val simpleAdapter: BaseQuickAdapter<Topic, KVHolder> = TopicAdapter()
 
     override fun loadPage(pageNo: Int): Single<Response<Page<Topic>>> =
-        api.getTopic(pageNo = pageNo)
+        api.getTopic(page = pageNo)
 
     override fun initViews() {
         super.initViews()
