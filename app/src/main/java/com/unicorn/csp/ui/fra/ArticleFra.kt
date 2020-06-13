@@ -32,7 +32,7 @@ class ArticleFra : SimplePageFra2<KVHolder>() {
                     success = it.success,
                     data = page
                 )
-                return@map  response
+                return@map response
             }
 
     override fun initViews() {

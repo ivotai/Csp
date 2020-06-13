@@ -11,7 +11,10 @@ import retrofit2.http.*
 interface SimpleApi {
 
     @GET("login/account")
-    fun login(@Query("username") username: String, @Query("password") password: String): Single<LoginResponse>
+    fun login(
+        @Query("username") username: String,
+        @Query("password") password: String
+    ): Single<LoginResponse>
 
     @GET("login/silence")
     fun loginSilently(@Query("token") token: String = Globals.token): Call<LoginResponse>
@@ -20,14 +23,15 @@ interface SimpleApi {
     fun getArticle(
         @Query("page") page: Int,
         @Query("pageSize") pageSize: Int = defaultPageSize,
-        @Query("category") category: String
+        @Query("category") category: String = "",
+        @Query("keyword") keyword: String = ""
     ): Single<Response<Page<Article>>>
 
     @GET("api/v1/app/article/{objectId}")
     fun getArticle(@Path("objectId") objectId: String): Single<Response<Article>>
 
     @POST("api/v1/app/topic")
-    fun createTopic(@Body createTopicParam:CreateTopicParam): Single<Response<Any>>
+    fun createTopic(@Body createTopicParam: CreateTopicParam): Single<Response<Any>>
 
     @GET("api/v1/app/topic")
     fun getTopic(
@@ -49,7 +53,10 @@ interface SimpleApi {
     ): Single<Response<Any>>
 
     @GET(value = "public/checkUpdate")
-    fun checkUpdate(@Query("version") version: String, @Query("id") id: String="1001"): Observable<CheckUpdateResponse>
+    fun checkUpdate(
+        @Query("version") version: String,
+        @Query("id") id: String = "1001"
+    ): Observable<CheckUpdateResponse>
 
     @Headers("accept:application/json")
     @GET(value = "logout")
