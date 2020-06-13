@@ -2,10 +2,10 @@ package com.unicorn.csp.ui.act
 
 import android.content.Intent
 import android.graphics.Color
-import android.graphics.drawable.Drawable
 import android.view.View
 import androidx.core.content.ContextCompat
 import com.blankj.utilcode.util.ActivityUtils
+import com.blankj.utilcode.util.ToastUtils
 import com.hjq.bar.OnTitleBarListener
 import com.mikepenz.iconics.IconicsDrawable
 import com.mikepenz.iconics.typeface.IIcon
@@ -16,14 +16,12 @@ import com.unicorn.csp.R
 import com.unicorn.csp.app.*
 import com.unicorn.csp.app.helper.DialogHelper
 import com.unicorn.csp.app.helper.ExceptionHelper
-import com.unicorn.csp.app.helper.UpdateHelper
 import com.unicorn.csp.data.event.LogoutEvent
 import com.unicorn.csp.ui.adapter.MainPagerAdapter
 import com.unicorn.csp.ui.base.BaseAct
 import com.unicorn.ticket.bs.app.RxBus
 import io.reactivex.functions.Consumer
 import io.reactivex.rxkotlin.subscribeBy
-import kotlinx.android.synthetic.main.act_login.*
 import kotlinx.android.synthetic.main.act_main.*
 import kotlinx.android.synthetic.main.act_main.titleBar
 import me.majiajie.pagerbottomtabstrip.item.NormalItemView
@@ -82,17 +80,20 @@ class MainAct : BaseAct() {
     }
 
     override fun bindIntent() {
-        titleBar.setRightTitle("我的").setOnTitleBarListener(object : OnTitleBarListener {
-            override fun onLeftClick(v: View?) {
-            }
+        titleBar.setLeftTitle("搜索")
+            .setRightTitle("我的")
+            .setOnTitleBarListener(object : OnTitleBarListener {
+                override fun onLeftClick(v: View?) {
+                    startAct(ArticleSearchAct::class.java)
+                }
 
-            override fun onRightClick(v: View?) {
-                startAct(MyAct::class.java)
-            }
+                override fun onRightClick(v: View?) {
+                    startAct(MyAct::class.java)
+                }
 
-            override fun onTitleClick(v: View?) {
-            }
-        })
+                override fun onTitleClick(v: View?) {
+                }
+            })
     }
 
     override fun registerEvent() {

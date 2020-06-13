@@ -13,6 +13,7 @@
         android:background="@color/colorPrimary"
         app:backButton="false"
         app:title="移动学习平台"
+        app:leftColor="@color/md_white"
         app:titleColor="@color/md_white"
         app:titleSize="18dp" />
 
