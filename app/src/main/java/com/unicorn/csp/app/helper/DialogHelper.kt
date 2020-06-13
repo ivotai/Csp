@@ -8,7 +8,7 @@ object DialogHelper {
     fun showMask(context: Context): KProgressHUD {
         return KProgressHUD.create(context)
             .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
-            .setCancellable(true)
+            .setCancellable(false)
             .setDimAmount(0.5f)
             .show()
     }

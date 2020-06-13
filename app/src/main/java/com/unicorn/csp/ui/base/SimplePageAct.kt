@@ -38,6 +38,7 @@ abstract class SimplePageAct<Model, K : BaseViewHolder> : BaseAct() {
             layoutManager = LinearLayoutManager(context)
             simpleAdapter.bindToRecyclerView(this)
             simpleAdapter.setEnableLoadMore(true)
+            addItemDecoration(LinearSpanDecoration(defaultPaddingPx))
         }
     }
 
