@@ -27,6 +27,9 @@ class LoginAct : BaseAct() {
 
     override fun bindIntent() {
         mbLogin.safeClicks().subscribe { loginX() }
+
+        // 自动登录
+        if (UserInfo.username.isNotEmpty() && !Globals.isLogout) loginX()
     }
 
     private fun loginX() {
@@ -50,12 +53,12 @@ class LoginAct : BaseAct() {
                     mask.dismiss()
                     if (it.failed) return@subscribeBy
                     Globals.loginResponse = it
+                    Globals.isLogout = false
                     with(UserInfo) {
                         username = etUsername.trimText()
                         password = etPassword.trimText()
                     }
                     UpdateHelper.checkVersion(this)
-//                    toActAndFinish(MainAct::class.java)
                 },
                 onError = {
                     mask.dismiss()

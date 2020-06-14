@@ -8,10 +8,13 @@ import com.blankj.utilcode.util.ConvertUtils
 import com.hjq.bar.OnTitleBarListener
 import com.unicorn.csp.R
 import com.unicorn.csp.app.Globals
+import com.unicorn.csp.app.helper.ExceptionHelper
+import com.unicorn.csp.app.observeOnMain
 import com.unicorn.csp.data.model.MyMenu
 import com.unicorn.csp.ui.adapter.MyAdapter
 import com.unicorn.csp.ui.base.BaseAct
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
+import io.reactivex.rxkotlin.subscribeBy
 import kotlinx.android.synthetic.main.act_my.*
 
 class MyAct : BaseAct() {
@@ -53,6 +56,17 @@ class MyAct : BaseAct() {
             override fun onTitleClick(v: View?) {
             }
         })
+
+        api.getSummary().observeOnMain(this).subscribeBy(
+            onSuccess = {
+                tvReadCount.text = it.data.readCount
+                tvTopicCount.text = it.data.topicCount
+                tvReplyCount.text = it.data.replyCount
+            },
+            onError = {
+                ExceptionHelper.showPrompt(it)
+            }
+        )
     }
 
     private val simpleAdapter = MyAdapter()

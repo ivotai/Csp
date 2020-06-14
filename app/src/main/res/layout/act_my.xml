@@ -91,7 +91,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/tvNum1"
+                android:id="@+id/tvReadCount"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
@@ -109,13 +109,13 @@
                 android:layout_width="1px"
                 android:layout_height="16dp"
                 android:background="@color/md_grey_400"
-                app:layout_constraintBottom_toBottomOf="@+id/tvNum1"
-                app:layout_constraintEnd_toStartOf="@+id/tvNum2"
-                app:layout_constraintStart_toEndOf="@+id/tvNum1"
-                app:layout_constraintTop_toTopOf="@+id/tvNum1" />
+                app:layout_constraintBottom_toBottomOf="@+id/tvReadCount"
+                app:layout_constraintEnd_toStartOf="@+id/tvTopicCount"
+                app:layout_constraintStart_toEndOf="@+id/tvReadCount"
+                app:layout_constraintTop_toTopOf="@+id/tvReadCount" />
 
             <TextView
-                android:id="@+id/tvNum2"
+                android:id="@+id/tvTopicCount"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -125,20 +125,20 @@
                 app:layout_constraintEnd_toStartOf="@+id/divider2"
                 app:layout_constraintHorizontal_weight="1"
                 app:layout_constraintStart_toEndOf="@+id/divider1"
-                app:layout_constraintTop_toTopOf="@+id/tvNum1" />
+                app:layout_constraintTop_toTopOf="@+id/tvReadCount" />
 
             <View
                 android:id="@+id/divider2"
                 android:layout_width="1px"
                 android:layout_height="16dp"
                 android:background="@color/md_grey_400"
-                app:layout_constraintBottom_toBottomOf="@+id/tvNum2"
-                app:layout_constraintEnd_toStartOf="@+id/tvNum3"
-                app:layout_constraintStart_toEndOf="@+id/tvNum2"
-                app:layout_constraintTop_toTopOf="@+id/tvNum2" />
+                app:layout_constraintBottom_toBottomOf="@+id/tvTopicCount"
+                app:layout_constraintEnd_toStartOf="@+id/tvReplyCount"
+                app:layout_constraintStart_toEndOf="@+id/tvTopicCount"
+                app:layout_constraintTop_toTopOf="@+id/tvTopicCount" />
 
             <TextView
-                android:id="@+id/tvNum3"
+                android:id="@+id/tvReplyCount"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -148,7 +148,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_weight="1"
                 app:layout_constraintStart_toEndOf="@+id/divider2"
-                app:layout_constraintTop_toTopOf="@+id/tvNum2" />
+                app:layout_constraintTop_toTopOf="@+id/tvTopicCount" />
 
             <TextView
                 android:id="@+id/tvLabel1"
@@ -160,9 +160,9 @@
                 android:textColor="@color/md_grey_400"
                 android:textSize="14dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/tvNum1"
-                app:layout_constraintStart_toStartOf="@+id/tvNum1"
-                app:layout_constraintTop_toBottomOf="@+id/tvNum1" />
+                app:layout_constraintEnd_toEndOf="@+id/tvReadCount"
+                app:layout_constraintStart_toStartOf="@+id/tvReadCount"
+                app:layout_constraintTop_toBottomOf="@+id/tvReadCount" />
 
             <TextView
                 android:id="@+id/tvLabel2"
@@ -171,8 +171,8 @@
                 android:text="我的发帖"
                 android:textColor="@color/md_grey_400"
                 android:textSize="14dp"
-                app:layout_constraintEnd_toEndOf="@+id/tvNum2"
-                app:layout_constraintStart_toStartOf="@+id/tvNum2"
+                app:layout_constraintEnd_toEndOf="@+id/tvTopicCount"
+                app:layout_constraintStart_toStartOf="@+id/tvTopicCount"
                 app:layout_constraintTop_toTopOf="@+id/tvLabel1" />
 
             <TextView
@@ -182,8 +182,8 @@
                 android:text="我的回复"
                 android:textColor="@color/md_grey_400"
                 android:textSize="14dp"
-                app:layout_constraintEnd_toEndOf="@+id/tvNum3"
-                app:layout_constraintStart_toStartOf="@+id/tvNum3"
+                app:layout_constraintEnd_toEndOf="@+id/tvReplyCount"
+                app:layout_constraintStart_toStartOf="@+id/tvReplyCount"
                 app:layout_constraintTop_toTopOf="@+id/tvLabel2" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

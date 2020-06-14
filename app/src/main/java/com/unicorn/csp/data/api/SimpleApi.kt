@@ -65,4 +65,7 @@ interface SimpleApi {
     @PUT("api/v1/app/modifyPassword")
     fun modifyPassword(@Body modifyPasswordParam: ModifyPasswordParam): Single<Response<Any>>
 
+    @GET("api/v1/app/i/summary")
+    fun getSummary(): Single<Response<Summary>>
+
 }

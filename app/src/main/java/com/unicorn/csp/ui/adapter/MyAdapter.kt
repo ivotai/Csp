@@ -2,6 +2,7 @@ package com.unicorn.csp.ui.adapter
 
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.unicorn.csp.R
+import com.unicorn.csp.app.Globals
 import com.unicorn.csp.app.safeClicks
 import com.unicorn.csp.app.startAct
 import com.unicorn.csp.data.event.LogoutEvent
@@ -18,7 +19,10 @@ class MyAdapter : BaseQuickAdapter<MyMenu, KVHolder>(R.layout.item_my) {
             tvText.text = item.text
             root.safeClicks().subscribe {
                 when (item) {
-                    MyMenu.Logout -> RxBus.post(LogoutEvent())
+                    MyMenu.Logout ->{
+                        Globals.isLogout = true
+                        RxBus.post(LogoutEvent())
+                    }
                     MyMenu.ModifyPassword -> mContext.startAct(ModifyPasswordAct::class.java)
                     else -> {
                     }
