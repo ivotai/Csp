@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.view.View
 import androidx.core.content.ContextCompat
+import androidx.viewpager2.widget.ViewPager2
 import com.blankj.utilcode.util.ActivityUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.hjq.bar.OnTitleBarListener
@@ -32,7 +33,6 @@ class MainAct : BaseAct() {
         val mainPagerAdapter = MainPagerAdapter(supportFragmentManager)
         viewPager.adapter = mainPagerAdapter
         viewPager.offscreenPageLimit = MainPagerAdapter.titles.size - 1
-
         val navigationController = tab.custom()
             .addItem(
                 newItem(
